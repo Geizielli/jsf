@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+    <title>Register Person</title>
+</h:head>
+
+<h:body>
+    <p>
+        <h:outputText value="Esse paranauê de JSF funciona!" />
+    </p>
+    <p>
+        <h:outputText value="#{personBean.name}" />
+    </p>
+
+    <h:form>
+        <h:outputLabel for="name" value="Your name:" />
+        <h:inputText id="nome" value="#{personBean.name}" />
+        <h:commandButton value="Send" action="#{personBean.spellName}" />
+        <h:commandButton value="Clear" action="#{personBean.clearName}" />
+    </h:form>
+</h:body>
+
+</html>
