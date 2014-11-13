@@ -2,12 +2,12 @@ package models;
 
 public class Person {
 	
+	private String name;
+	
 	public Person() {};
 	public Person(String name) {
 		setName(name);
 	}
-	
-	private String name;
 	
 	public String getName() {
 		return name;

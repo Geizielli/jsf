@@ -21,10 +21,10 @@ public class PersonBean {
 	
 	public String addPerson() {
 		people.add(new Person(person.getName()));
-		return "person/register";
+		return "/person/list";
 	}
 	
-	public String clearPerson() {
+	public String clearPeople() {
 		setPerson(new Person());
 		people = new ArrayList<>();
 		return null;
