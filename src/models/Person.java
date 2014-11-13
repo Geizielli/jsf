@@ -2,19 +2,17 @@ package models;
 
 public class Person {
 	
-	private String nome;
-	private Integer idade;
+	public Person() {};
+	public Person(String name) {
+		setName(name);
+	}
 	
-	public String getNome() {
-		return nome;
+	private String name;
+	
+	public String getName() {
+		return name;
 	}
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-	public Integer getIdade() {
-		return idade;
-	}
-	public void setIdade(Integer idade) {
-		this.idade = idade;
+	public void setName(String name) {
+		this.name = name;
 	}
 }

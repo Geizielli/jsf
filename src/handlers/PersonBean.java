@@ -4,32 +4,44 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+
+import models.Person;
 
 @ManagedBean
+@SessionScoped
 public class PersonBean {
 	
-	private String name;
+	private Person person;
+	private List<Person> people = new ArrayList<>();;
 	
-	public void spellName() {
-		setName(name);
+	public PersonBean() {
+		person = new Person();
 	}
 	
-	public void clearName() {
-		setName(null);
+	public String addPerson() {
+		people.add(new Person(person.getName()));
+		return "person/register";
 	}
 	
-	public List<String> getPersons() {
-		List<String> persons = new ArrayList<String>();
-		persons.add("Nassor");
-		persons.add("Mimimi");
-		persons.add("Lalala");
-		return persons;
+	public String clearPerson() {
+		setPerson(new Person());
+		people = new ArrayList<>();
+		return null;
 	}
 	
-	public String getName() {
-		return name;
+	public List<Person> getPeople() {
+		return people;
 	}
-	public void setName(String name) {
-		this.name = name;
+	
+	public Person getPerson() {
+		return person;
+	}
+	public void setPerson(Person person) {
+		this.person = person;
+	}
+	
+	public String list() {
+		return "/person/list";
 	}
 }

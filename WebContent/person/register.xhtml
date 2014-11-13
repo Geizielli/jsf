@@ -1,26 +1,46 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:h="http://java.sun.com/jsf/html">
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core">
 
 <h:head>
     <title>Register Person</title>
+    <h:outputStylesheet library="css" name="bootstrap.min.css" />
+    <h:outputStylesheet library="css" name="bootstrap-theme.min.css" />
+    <h:outputStylesheet library="css" name="default.css" />
 </h:head>
 
 <h:body>
-    <p>
-        <h:outputText value="Esse paranauê de JSF funciona!" />
-    </p>
-    <p>
-        <h:outputText value="#{personBean.name}" />
-    </p>
+    <div class="container">
+        <h1>
+            <h:outputText value="Esse paranauê de JSF funciona!" />
+        </h1>
+        <p>
+            <h:outputText value="#{personBean.person.name}" />
+        </p>
 
-    <h:form>
-        <h:outputLabel for="name" value="Your name:" />
-        <h:inputText id="nome" value="#{personBean.name}" />
-        <h:commandButton value="Send" action="#{personBean.spellName}" />
-        <h:commandButton value="Clear" action="#{personBean.clearName}" />
-    </h:form>
+        <h:dataTable styleClass="table table-striped" var="person" value="#{personBean.people}">
+            <h:column>
+                <f:facet name="header">Name</f:facet>
+            #{person.name}
+        </h:column>
+        </h:dataTable>
+
+        <h:form>
+            <h:outputLabel for="name" value="Your name:" />
+            <h:inputText id="name" value="#{personBean.person.name}" />
+            <h:commandButton value="Send"
+                action="#{personBean.addPerson}" />
+            <h:commandButton value="Clear"
+                action="#{personBean.clearPerson}" />
+        </h:form>
+
+        <h:form>
+            <h:commandLink value="Only show list"
+                action="#{personBean.list}" />
+        </h:form>
+    </div>
 </h:body>
 
 </html>
