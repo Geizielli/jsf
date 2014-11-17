@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
-<html xmlns:h="http://java.sun.com/jsf/html"
+<html xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core">
 
 <h:head>
@@ -11,33 +12,32 @@
 </h:head>
 
 <h:body>
-	<div class="container">
-		<h1>
-			<h:outputText value="Esse paranauê de JSF funciona!" />
-		</h1>
-		<p>
-			<h:outputText value="#{personBean.person.name}" />
-		</p>
+	<ui:composition template="/layout.xhtml">
+		<ui:define name="content">
+			<h1>
+				<h:outputText value="Esse paranauê de JSF funciona!" />
+			</h1>
+			<p>
+				<h:outputText value="#{personBean.person.name}" />
+			</p>
 
-		<h:dataTable styleClass="table table-striped" var="person"
-			value="#{personBean.people}">
-			<h:column>
-				<f:facet name="header">Name</f:facet>
+			<h:dataTable styleClass="table table-striped" var="person"
+				value="#{personBean.people}">
+				<h:column>
+					<f:facet name="header">Name</f:facet>
             #{person.name}
         </h:column>
-		</h:dataTable>
+			</h:dataTable>
 
-		<h:form>
-			<h:outputLabel for="name" value="Your name:" />
-			<h:inputText id="name" value="#{personBean.person.name}" />
-			<h:commandButton value="Send" action="#{personBean.addPerson}" />
-			<h:commandButton value="Clear" action="#{personBean.clearPeople}" />
-		</h:form>
-
-		<h:form>
-			<h:commandLink value="Only show list" action="#{personBean.list}" />
-		</h:form>
-	</div>
+			<h:form>
+				<h:outputLabel for="name" value="Your name:" />
+				<h:inputText id="name" value="#{personBean.person.name}" />
+				<h:commandButton value="Send" action="#{personBean.addPerson}" />
+				<h:commandButton value="Clear" action="#{personBean.clearPeople}" />
+			</h:form>
+			
+		</ui:define>
+	</ui:composition>
 </h:body>
 
 </html>

@@ -1,27 +1,32 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:f="http://java.sun.com/jsf/core">
+<html xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
 
 <h:head>
-    <title>Register Person</title>
-    <h:outputStylesheet library="css" name="bootstrap.min.css" />
-    <h:outputStylesheet library="css" name="bootstrap-theme.min.css" />
-    <h:outputStylesheet library="css" name="default.css" />
+	<title>Register Person</title>
+	<h:outputStylesheet library="css" name="bootstrap.min.css" />
+	<h:outputStylesheet library="css" name="bootstrap-theme.min.css" />
+	<h:outputStylesheet library="css" name="default.css" />
 </h:head>
 
 <h:body>
-<div class="container">
-    <h:dataTable styleClass="table table-striped" var="person" value="#{personBean.people}">
-        <h:column>
-            <f:facet name="header">Name</f:facet>
-            #{person.name}
-        </h:column>
-    </h:dataTable>
-    
-    <h:link value="show register" outcome="/person/register" />
-    </div>
+	<ui:composition template="/layout.xhtml">
+		<ui:define name="content">
+			<h:dataTable styleClass="table table-striped" var="person"
+				value="#{personBean.people}">
+				<h:column>
+					<f:facet name="header">Name</f:facet>
+                    #{person.name}
+                </h:column>
+			</h:dataTable>
+		</ui:define>
+		
+		<ui:define name="footer">
+		      <ui:include src="/footer.xhtml"></ui:include>
+		</ui:define>
+	</ui:composition>
 </h:body>
 
 </html>
