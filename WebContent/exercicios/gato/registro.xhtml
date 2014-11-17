@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<meta charset="UTF-8" />
+	<title>Cadastro de Gatos!!!!</title>
+</h:head>
+<h:body>
+    <h:link outcome="/exercicios/gato/listar" value="Listar" />
+	<div>
+		<h:form>
+			<h:outputLabel for="nome" value="Registre o seu gato:" />
+			<br />
+			<h:inputText id="nome" value="#{gatoBean.cat.nome}" />
+			<br />
+			<h:inputText id="raca" value="#{gatoBean.cat.raca}" />
+			<br />
+			<h:inputText id="idade" value="#{gatoBean.cat.idade}" />
+			<br />
+			<h:commandButton value="Send" action="#{gatoBean.addCat}" />
+			<h:commandButton value="Clear" action="#{gatoBean.clearCat}" />
+		</h:form>
+
+		<br />
+		<br />
+
+		<h:outputText value="#{gatoBean.cat.nome}" /> - 
+	    <h:outputText value="#{gatoBean.cat.raca}" /> - 
+	    <h:outputText value="#{gatoBean.cat.idade}" />
+
+	</div>
+</h:body>
+</html>
