@@ -1,6 +1,7 @@
 package handlers;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -18,6 +19,14 @@ public class PersonBean {
 	public PersonBean() {
 		person = new Person();
 		people = new ArrayList<>();
+		
+		Date d = new Date();
+		long mimimi = d.getTime();
+		
+		Date d_deprc = new Date(1992, 7, 20);
+		
+		
+		
 	}
 	
 	public String addPerson() {
