@@ -13,21 +13,23 @@ import models.Person;
 public class PersonBean {
 	
 	private Person person;
-	private List<Person> people = new ArrayList<>();;
+	private List<Person> people;
 	
 	public PersonBean() {
 		person = new Person();
+		people = new ArrayList<>();
 	}
 	
 	public String addPerson() {
-		people.add(new Person(person.getName()));
+		people.add(new Person(person));
+		setPerson(new Person());
 		return "/person/list";
 	}
 	
 	public String clearPeople() {
 		setPerson(new Person());
 		people = new ArrayList<>();
-		return null;
+		return "/person/register";
 	}
 	
 	public List<Person> getPeople() {

@@ -11,7 +11,14 @@
 				value="#{personBean.people}">
 				<h:column>
 					<f:facet name="header">Name</f:facet>
-                    #{person.name}
+                    #{person.name} -
+                    <h:outputText value="#{person.nascimento}">
+                        <f:convertDateTime pattern="dd/mm/yyyy" />
+                    </h:outputText> - 
+                    <h:outputText value="#{person.peso}">
+                        <f:convertNumber pattern="##0.00" />
+                    </h:outputText>
+                    
                 </h:column>
 			</h:dataTable>
 		</ui:define>

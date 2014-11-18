@@ -10,25 +10,31 @@
 			<h1>
 				<h:outputText value="Esse paranauê de JSF funciona!" />
 			</h1>
-			<p>
-				<h:outputText value="#{personBean.person.name}" />
-			</p>
 
-			<h:dataTable styleClass="table table-striped" var="person"
-				value="#{personBean.people}">
-				<h:column>
-					<f:facet name="header">Name</f:facet>
-            #{person.name}
-        </h:column>
-			</h:dataTable>
-
-			<h:form>
-				<h:outputLabel for="name" value="Your name:" />
+			<h:form styleClass="form">
+			    <div class="form-group">
+				<h:outputLabel for="name" value="your name:" />
 				<h:inputText id="name" value="#{personBean.person.name}" />
+				</div>
+				
+				<div class="form-group">
+				<h:outputLabel for="date" value="your birthday:" />
+				<h:inputText id="date" value="#{personBean.person.nascimento}">
+                    <f:convertDateTime pattern="dd/mm/yyyy" />
+                </h:inputText>
+                </div>
+                
+                <div class="form-group">
+                <h:outputLabel for="peso" value="your weight:" />
+                <h:inputText id="peso" value="#{personBean.person.peso}">
+                    <f:convertNumber pattern="000.00" />
+                </h:inputText>
+                </div>
+                
 				<h:commandButton value="Send" action="#{personBean.addPerson}" />
 				<h:commandButton value="Clear" action="#{personBean.clearPeople}" />
 			</h:form>
-			
+
 		</ui:define>
 	</ui:composition>
 </h:body>
