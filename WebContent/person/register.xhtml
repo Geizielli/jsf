@@ -7,34 +7,58 @@
 <h:body>
 	<ui:composition template="/layout.xhtml">
 		<ui:define name="content">
-			<h1>
-				<h:outputText value="Esse paranauê de JSF funciona!" />
-			</h1>
+		  <h1>Cadastro de Pessoa</h1>
+			<h:messages />
 
-			<h:form styleClass="form">
-			    <div class="form-group">
-				<h:outputLabel for="name" value="your name:" />
-				<h:inputText id="name" value="#{personBean.person.name}" />
-				</div>
-				
+			<h:form styleClass="form-horizontal" id="pForm">
 				<div class="form-group">
-				<h:outputLabel for="date" value="your birthday:" />
-				<h:inputText id="date" value="#{personBean.person.nascimento}">
-                    <f:convertDateTime pattern="ddmmyyyy" />
-                </h:inputText>
-                </div>
-                
-                <div class="form-group">
-                <h:outputLabel for="peso" value="your weight:" />
-                <h:inputText id="peso" value="#{personBean.person.peso}">
-                    <f:convertNumber pattern="000.00" />
-                </h:inputText>
-                </div>
-                
-				<h:commandButton value="Send" action="#{personBean.addPerson}" />
-				<h:commandButton value="Clear" action="#{personBean.clearPeople}" />
-			</h:form>
+					<h:outputLabel for="name" value="Nome" styleClass="col-sm-2" />
+					<div class="col-sm-7">
+						<h:inputText id="name" value="#{personBean.person.name}"
+							required="true" styleClass="form-control" />
+					</div>
+					<div class="col-sm-3">
+						<h:message for="name" />
+					</div>
 
+				</div>
+
+				<div class="form-group">
+					<h:outputLabel for="date" value="Nascimento:" styleClass="col-sm-2" />
+					<div class="col-sm-7">
+						<h:inputText id="date" value="#{personBean.person.nascimento}"
+							required="true" styleClass="form-control">
+							<f:convertDateTime pattern="dd/mm/yyyy" />
+						</h:inputText>
+					</div>
+					<div class="col-sm-3">
+						<h:message for="date" />
+					</div>
+				</div>
+
+				<div class="form-group">
+					<h:outputLabel for="peso" value="Peso:" styleClass="col-sm-2" />
+					<div class="col-sm-7">
+						<h:inputText id="peso" value="#{personBean.person.peso}"
+							styleClass="form-control">
+							<f:validateLongRange minimum="1" maximum="100000" />
+							<f:convertNumber pattern="000.00" />
+						</h:inputText>
+					</div>
+					<div class="col-sm-3">
+						<h:message for="peso" />
+					</div>
+				</div>
+
+				<div class="btn-group" role="group">
+					<h:commandButton value="Send" action="#{personBean.addPerson}"
+						styleClass="btn btn-primary" />
+					<h:commandButton value="Clear" action="#{personBean.clearPeople}"
+						immediate="true" styleClass="btn btn-info">
+						<f:resetValues render="form:pForm" />
+					</h:commandButton>
+				</div>
+			</h:form>
 		</ui:define>
 	</ui:composition>
 </h:body>

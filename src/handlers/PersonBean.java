@@ -1,7 +1,7 @@
 package handlers;
 
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -11,7 +11,8 @@ import models.Person;
 
 @ManagedBean
 @SessionScoped
-public class PersonBean {
+public class PersonBean implements Serializable {
+	private static final long serialVersionUID = 1L;
 	
 	private Person person;
 	private List<Person> people;
@@ -19,19 +20,16 @@ public class PersonBean {
 	public PersonBean() {
 		person = new Person();
 		people = new ArrayList<>();
-		
-		Date d = new Date();
-		long mimimi = d.getTime();
-		
-		Date d_deprc = new Date(1992, 7, 20);
-		
-		
-		
 	}
 	
 	public String addPerson() {
 		people.add(new Person(person));
 		setPerson(new Person());
+		return "/person/list";
+	}
+	
+	public String removePerson() {
+		people.remove(person);
 		return "/person/list";
 	}
 	

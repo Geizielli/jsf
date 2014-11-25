@@ -7,24 +7,33 @@
 <h:body>
 	<ui:composition template="/layout.xhtml">
 		<ui:define name="content">
-			<h:dataTable styleClass="table table-striped" var="person"
-				value="#{personBean.people}">
-				<h:column>
-					<f:facet name="header">Name</f:facet>
+			<h:form>
+				<h:dataTable styleClass="table table-striped" var="person"
+					value="#{personBean.people}">
+					<h:column>
+						<f:facet name="header">Name</f:facet>
                     #{person.name} -
                     <h:outputText value="#{person.nascimento}">
-                        <f:convertDateTime pattern="dd/mm/yyyy" />
-                    </h:outputText> - 
+						<f:convertDateTime pattern="dd/mm/yyyy" />
+					</h:outputText> - 
                     <h:outputText value="#{person.peso}">
-                        <f:convertNumber pattern="#0.00" />
-                    </h:outputText>
-                    
-                </h:column>
-			</h:dataTable>
+						<f:convertNumber pattern="#0.00" />
+					</h:outputText>
+
+					</h:column>
+					<h:column>
+						<f:facet name="header">Ações</f:facet>
+						<h:commandLink value="Remover" action="#{personBean.removePerson}">
+							<f:setPropertyActionListener target="#{personBean.person}"
+								value="#{person}" />
+						</h:commandLink>
+					</h:column>
+				</h:dataTable>
+			</h:form>
 		</ui:define>
-		
+
 		<ui:define name="footer">
-		      <ui:include src="/footer.xhtml"></ui:include>
+			<ui:include src="/footer.xhtml"></ui:include>
 		</ui:define>
 	</ui:composition>
 </h:body>

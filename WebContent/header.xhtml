@@ -3,9 +3,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html">
 <h:body>
-<ul class="list-inline">
-    <li><h:link value="Registro" outcome="/person/register" styleClass="btn btn-primary btn-lg" /></li>
-    <li><h:link value="Listar" outcome="/person/list" styleClass="btn btn-primary btn-lg" /></li>
-</ul>
+	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+		<div class="container">
+			<ul class="nav navbar-nav">
+				<li><h:link value="Registro" outcome="/person/register"
+						styleClass="btn" /></li>
+				<li><h:link value="Listar" outcome="/person/list"
+						styleClass="btn" /></li>
+			</ul>
+		</div>
+	</nav>
 </h:body>
 </html>
