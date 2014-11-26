@@ -12,14 +12,25 @@
 					value="#{personBean.people}">
 					<h:column>
 						<f:facet name="header">Name</f:facet>
-                    #{person.name} -
-                    <h:outputText value="#{person.nascimento}">
-						<f:convertDateTime pattern="dd/mm/yyyy" />
-					</h:outputText> - 
-                    <h:outputText value="#{person.peso}">
-						<f:convertNumber pattern="#0.00" />
-					</h:outputText>
-
+                        #{person.name}
+                    </h:column>
+					<h:column>
+					   <f:facet name="header">Nascimento</f:facet>
+						<h:outputText value="#{person.nascimento}">
+							<f:convertDateTime pattern="dd/mm/yyyy" />
+						</h:outputText>
+					</h:column>
+					<h:column>
+					   <f:facet name="header">Peso</f:facet>
+						<h:outputText value="#{person.peso}">
+							<f:convertNumber minFractionDigits="2" />
+						</h:outputText>
+					</h:column>
+					<h:column>
+					   <f:facet name="header">Telefone</f:facet>
+						<h:outputText value="#{person.telefone}">
+							<f:converter converterId="telefoneConverter" />
+						</h:outputText>
 					</h:column>
 					<h:column>
 						<f:facet name="header">Ações</f:facet>

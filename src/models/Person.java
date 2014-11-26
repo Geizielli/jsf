@@ -1,20 +1,15 @@
 package models;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Person {
+public class Person implements Serializable {
+	private static final long serialVersionUID = -1866514284230829377L;
 	
 	private String name;
 	private Date nascimento;
 	private Double peso;
-	
-	public Person() {};
-	
-	public Person(Person person) {
-		setName(person.getName());
-		setNascimento(person.getNascimento());
-		setPeso(person.getPeso());
-	}
+	private Long telefone;
 	
 	public String getName() {
 		return name;
@@ -33,5 +28,13 @@ public class Person {
 	}
 	public void setPeso(Double peso) {
 		this.peso = peso;
+	}
+
+	public Long getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(Long telefone) {
+		this.telefone = telefone;
 	}
 }

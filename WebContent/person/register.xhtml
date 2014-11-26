@@ -41,14 +41,27 @@
 					<div class="col-sm-7">
 						<h:inputText id="peso" value="#{personBean.person.peso}"
 							styleClass="form-control">
-							<f:validateLongRange minimum="1" maximum="100000" />
-							<f:convertNumber pattern="000.00" />
+							<f:validateDoubleRange minimum="1" maximum="100000" />
+							<f:convertNumber minFractionDigits="2" />
 						</h:inputText>
 					</div>
 					<div class="col-sm-3">
 						<h:message for="peso" />
 					</div>
 				</div>
+				
+				<div class="form-group">
+                    <h:outputLabel for="telefone" value="Telefone:" styleClass="col-sm-2" />
+                    <div class="col-sm-7">
+                        <h:inputText id="telefone" value="#{personBean.person.telefone}"
+                            styleClass="form-control">
+                            <f:converter converterId="telefoneConverter" />
+                        </h:inputText>
+                    </div>
+                    <div class="col-sm-3">
+                        <h:message for="telefone" />
+                    </div>
+                </div>
 
 				<div class="btn-group" role="group">
 					<h:commandButton value="Send" action="#{personBean.addPerson}"

@@ -23,19 +23,19 @@ public class PersonBean implements Serializable {
 	}
 	
 	public String addPerson() {
-		people.add(new Person(person));
+		people.add(person);
 		setPerson(new Person());
 		return "/person/list";
 	}
 	
 	public String removePerson() {
 		people.remove(person);
+		setPerson(new Person());
 		return "/person/list";
 	}
 	
 	public String clearPeople() {
 		setPerson(new Person());
-		people = new ArrayList<>();
 		return "/person/register";
 	}
 	
