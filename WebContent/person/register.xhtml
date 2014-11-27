@@ -55,6 +55,7 @@
                     <div class="col-sm-7">
                         <h:inputText id="telefone" value="#{personBean.person.telefone}"
                             styleClass="form-control">
+                            <f:validator validatorId="telefoneValidator" />
                             <f:converter converterId="telefoneConverter" />
                         </h:inputText>
                     </div>
