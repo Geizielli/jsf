@@ -9,8 +9,13 @@ import javax.faces.convert.FacesConverter;
 public class TelefoneConverter implements Converter {
 
 	public Object getAsObject(FacesContext fc, UIComponent uic, String s) {
-		Long l = Long.parseLong(s.replaceAll("\\D", ""));
-		return l;
+		String t = s.replaceAll("\\D", "");
+		if (t != "") {
+			Long l = Long.parseLong(t);
+			return l;
+		}
+		
+		return null;
 	}
 
 	public String getAsString(FacesContext fc, UIComponent uic, Object o) {

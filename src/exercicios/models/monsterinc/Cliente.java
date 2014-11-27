@@ -7,6 +7,8 @@ public class Cliente {
 	private String email;
 	private Date nascimento;
 	private Long telefone;
+	private Long CPF;
+	private String RG;
 	
 	public String getNome() {
 		return nome;
@@ -31,5 +33,17 @@ public class Cliente {
 	}
 	public void setTelefone(Long telefone) {
 		this.telefone = telefone;
+	}
+	public Long getCPF() {
+		return CPF;
+	}
+	public void setCPF(Long cPF) {
+		CPF = cPF;
+	}
+	public String getRG() {
+		return RG;
+	}
+	public void setRG(String rG) {
+		RG = rG;
 	}
 }

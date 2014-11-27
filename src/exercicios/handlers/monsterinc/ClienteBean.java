@@ -8,7 +8,7 @@ import javax.faces.bean.SessionScoped;
 
 import exercicios.models.monsterinc.Cliente;
 
-@ManagedBean
+@ManagedBean(name="clienteMonsterBean")
 @SessionScoped
 public class ClienteBean {
 	private Cliente cliente;

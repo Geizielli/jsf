@@ -15,7 +15,7 @@ public class TelefoneValidator implements Validator {
 		
 		String tel = String.valueOf((Long) o);
 		
-		if(tel.length() != 10) {
+		if(tel.length() != 10 && tel.length() != 11) {
 			FacesMessage msg = new FacesMessage("Meu fio, coloca esse número certo!");
 			msg.setSeverity(FacesMessage.SEVERITY_ERROR);
 			throw new ValidatorException(msg);
