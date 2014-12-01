@@ -5,42 +5,57 @@
 	xmlns:f="http://java.sun.com/jsf/core">
 
 <h:body>
-	<ui:composition template="/exercicios/monsterinc/layout.xhtml">
+	<ui:composition template="/exercicios/geracaotec/layout.xhtml">
 		<ui:define name="content">
 			<h:form>
-				<h:dataTable styleClass="table table-striped" var="cliente"
-					value="#{clienteMonsterBean.clientes}">
+				<h:dataTable styleClass="table table-striped" var="empresa"
+					value="#{empresaBean.empresas}">
 					<h:column>
 						<f:facet name="header">Nome</f:facet>
-                        #{cliente.nome}
+                        #{empresa.nomeFantasia}
+                    </h:column>
+                    
+                    <h:column>
+                        <f:facet name="header">CNPJ</f:facet>
+                        #{empresa.cnpj}
+                    </h:column>
+                    
+                    <h:column>
+                        <f:facet name="header">Telefone</f:facet>
+                        #{empresa.cnpj}
+                    </h:column>
+                    
+                    <h:column>
+                        <f:facet name="header">Email</f:facet>
+                        #{empresa.email}
                     </h:column>
 
 					<h:column>
 						<f:facet name="header">Email</f:facet>
-                        #{cliente.email}
+                        #{empresa.email}
                     </h:column>
 
 					<h:column>
 						<f:facet name="header">Nascimento</f:facet>
-						<h:outputText value="#{cliente.nascimento}">
+						<h:outputText value="#{empresa.nascimento}">
 							<f:convertDateTime pattern="yyyy-mm-dd" />
 						</h:outputText>
 					</h:column>
 
 					<h:column>
 						<f:facet name="header">Telefone</f:facet>
-						<h:outputText value="#{cliente.telefone}"
+						<h:outputText value="#{empresa.telefone}"
 							converter="telefoneConverter" />
 					</h:column>
 
 					<h:column>
 						<f:facet name="header">CPF</f:facet>
-						<h:outputText value="#{cliente.CPF}" converter="cpfConverter" />
+						<h:outputText value="#{empresa.CPF}" converter="cpfConverter" />
 					</h:column>
 
 					<h:column>
 						<f:facet name="header">RG</f:facet>
-						<h:outputText value="#{cliente.RG}">
+						<h:outputText value="#{empresa.RG}">
 						  <f:converter converterId="rgConverter" />
 						</h:outputText>
 					</h:column>
@@ -48,9 +63,9 @@
 					<h:column>
 						<f:facet name="header">Acões</f:facet>
 						<h:commandLink value="Remover"
-							action="#{clienteMonsterBean.remove}">
+							action="#{empresaBean.remove}">
 							<f:setPropertyActionListener
-								target="#{clienteMonsterBean.cliente}" value="#{cliente}" />
+								target="#{empresaBean.empresa}" value="#{empresa}" />
 						</h:commandLink>
 					</h:column>
 				</h:dataTable>

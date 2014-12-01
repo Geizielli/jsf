@@ -6,7 +6,10 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 
+import util.JPA;
 import models.Person;
 
 @ManagedBean
@@ -24,12 +27,24 @@ public class PersonBean implements Serializable {
 	
 	public String addPerson() {
 		people.add(person);
+		
+		EntityManager em = JPA.getEM();
+		em.getTransaction().begin();
+		em.persist(person);
+		em.getTransaction().commit();
+		
 		setPerson(new Person());
 		return "/person/list";
 	}
 	
 	public String removePerson() {
 		people.remove(person);
+		
+		EntityManager em = JPA.getEM();
+		em.getTransaction().begin();
+		em.remove(person);
+		em.getTransaction().commit();
+		
 		setPerson(new Person());
 		return "/person/list";
 	}
@@ -40,7 +55,9 @@ public class PersonBean implements Serializable {
 	}
 	
 	public List<Person> getPeople() {
-		return people;
+		EntityManager em = JPA.getEM();
+		TypedQuery<Person> query = em.createQuery("SELECT p from Person p", Person.class);
+		return query.getResultList();
 	}
 	
 	public Person getPerson() {
