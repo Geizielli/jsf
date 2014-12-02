@@ -2,44 +2,46 @@
 
 <html xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 
 <h:body>
 	<ui:composition template="/layout.xhtml">
 		<ui:define name="content">
 			<h:form>
-				<h:dataTable styleClass="table table-striped" var="person"
-					value="#{personBean.people}">
-					<h:column>
+				<p:dataTable tableStyle="table table-striped" var="person"
+					value="#{personBean.people}" lazy="true" paginator="true"
+					rows="1">
+					<p:column>
 						<f:facet name="header">Nome</f:facet>
                         #{person.name}
-                    </h:column>
-					<h:column>
+                    </p:column>
+					<p:column>
 					   <f:facet name="header">Nascimento</f:facet>
 						<h:outputText value="#{person.nascimento}">
 							<f:convertDateTime pattern="dd/mm/yyyy" />
 						</h:outputText>
-					</h:column>
-					<h:column>
+					</p:column>
+					<p:column>
 					   <f:facet name="header">Peso</f:facet>
 						<h:outputText value="#{person.peso}">
 							<f:convertNumber minFractionDigits="2" />
 						</h:outputText>
-					</h:column>
-					<h:column>
+					</p:column>
+					<p:column>
 					   <f:facet name="header">Telefone</f:facet>
 						<h:outputText value="#{person.telefone}">
 							<f:converter converterId="telefoneConverter" />
 						</h:outputText>
-					</h:column>
-					<h:column>
+					</p:column>
+					<p:column>
 						<f:facet name="header">Ações</f:facet>
 						<h:commandLink value="Remover" action="#{personBean.removePerson}">
 							<f:setPropertyActionListener target="#{personBean.person}"
 								value="#{person}" />
 						</h:commandLink>
-					</h:column>
-				</h:dataTable>
+					</p:column>
+				</p:dataTable>
 			</h:form>
 		</ui:define>
 

@@ -24,6 +24,11 @@ public class Person implements Serializable {
 	private Double peso;
 	private Long telefone;
 	
+	public Person() {}
+	public Person(String name) {
+		this.name = name;
+	}
+	
 	public Integer getId() {
 		return id;
 	}

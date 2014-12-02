@@ -6,28 +6,39 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
+import org.primefaces.model.LazyDataModel;
+
 import util.JPA;
 import models.Person;
+import models.PersonList;
 
 @ManagedBean
-@SessionScoped
+@ViewScoped
 public class PersonBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private Person person;
-	private List<Person> people;
+	private LazyDataModel<Person> people = null;
 	
 	public PersonBean() {
+		EntityManager em = JPA.getEM();
+		em.getTransaction().begin();
+		
+		em.persist(new Person("Mimimi"));
+		em.persist(new Person("Lalala"));
+		em.persist(new Person("Vushhh"));
+		em.persist(new Person("Blabla"));
+		
+		em.getTransaction().commit();
+		
 		person = new Person();
-		people = new ArrayList<>();
 	}
 	
 	public String addPerson() {
-		people.add(person);
-		
 		EntityManager em = JPA.getEM();
 		em.getTransaction().begin();
 		em.persist(person);
@@ -38,7 +49,6 @@ public class PersonBean implements Serializable {
 	}
 	
 	public String removePerson() {
-		people.remove(person);
 		
 		EntityManager em = JPA.getEM();
 		em.getTransaction().begin();
@@ -54,10 +64,12 @@ public class PersonBean implements Serializable {
 		return "/person/register";
 	}
 	
-	public List<Person> getPeople() {
-		EntityManager em = JPA.getEM();
-		TypedQuery<Person> query = em.createQuery("SELECT p from Person p", Person.class);
-		return query.getResultList();
+	public LazyDataModel<Person> getPeople() {
+		if (people == null) {
+			people = new PersonList();
+		}
+		
+		return people;
 	}
 	
 	public Person getPerson() {
