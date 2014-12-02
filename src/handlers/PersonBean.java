@@ -25,16 +25,6 @@ public class PersonBean implements Serializable {
 	private LazyDataModel<Person> people = null;
 	
 	public PersonBean() {
-		EntityManager em = JPA.getEM();
-		em.getTransaction().begin();
-		
-		em.persist(new Person("Mimimi"));
-		em.persist(new Person("Lalala"));
-		em.persist(new Person("Vushhh"));
-		em.persist(new Person("Blabla"));
-		
-		em.getTransaction().commit();
-		
 		person = new Person();
 	}
 	

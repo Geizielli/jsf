@@ -8,12 +8,13 @@
 <h:body>
 	<div>
 		<h:form>
-			<h:outputLabel for="nome" value="Registre o seu cao:" />
-			<br />
+			<h:outputLabel for="nome" value="Nome" />
 			<h:inputText id="nome" value="#{cachorroBean.dog.nome}" />
 			<br />
+			<h:outputLabel for="raca" value="Raça" />
 			<h:inputText id="raca" value="#{cachorroBean.dog.raca}" />
 			<br />
+			<h:outputLabel for="idade" value="Idade" />
 			<h:inputText id="idade" value="#{cachorroBean.dog.idade}" />
 			<br />
 			<h:commandButton value="Send" action="#{cachorroBean.addCao}" />

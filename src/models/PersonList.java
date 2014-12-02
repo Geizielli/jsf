@@ -18,16 +18,17 @@ public class PersonList extends LazyDataModel<Person> {
 	private List<Person> people;
 	
 	@Override
-	public List<Person> load(int iniciaEm, int maximoPorPagina, String sortField, SortOrder sortOrder, Map<String,Object> filters) {
+	public List<Person> load(int iniciaEm, int maximoPorPagina,
+			String sortField, SortOrder sortOrder, Map<String, Object> filters) {
 		EntityManager em = JPA.getEM();
 		TypedQuery<Person> query = em.createQuery("SELECT p from Person p", Person.class);
 		query.setFirstResult(iniciaEm);
 		query.setMaxResults(maximoPorPagina);
-		people = query.getResultList();
+		this.people = query.getResultList();
 		
 		// total de resultados
-        if(getRowCount() <= 0){
-            setRowCount(countPeople());
+        if(super.getRowCount() <= 0){
+        	super.setRowCount(countPeople());
         }
 		
         // total por página
@@ -41,8 +42,8 @@ public class PersonList extends LazyDataModel<Person> {
     }
 	
 	@Override
-    public Person getRowData(String playerId) {
-        Integer id = Integer.valueOf(playerId);
+    public Person getRowData(String personId) {
+        Integer id = Integer.valueOf(personId);
  
         for (Person person: people) {
             if(id.equals(person.getId())){

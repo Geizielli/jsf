@@ -32,13 +32,24 @@ public class JPAFilter implements Filter {
 	public void doFilter(ServletRequest req, ServletResponse res,
 			FilterChain chain) throws IOException, ServletException {
 		
-		EntityManager manager = this.factory.createEntityManager();
-		req.setAttribute("EntityManager", manager);
+		EntityManager em = this.factory.createEntityManager();
+		req.setAttribute("EntityManager", em);
 		
 		chain.doFilter(req, res);
 	}
-
-	
-	
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
