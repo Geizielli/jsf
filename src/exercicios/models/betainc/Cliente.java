@@ -7,6 +7,7 @@ public class Cliente {
 	private Date nascimento;
 	private String endereco;
 	private Double gasto;
+	private Vendedor vendedor;
 	
 	public String getNome() {
 		return nome;
@@ -31,5 +32,11 @@ public class Cliente {
 	}
 	public void setGasto(Double gasto) {
 		this.gasto = gasto;
+	}
+	public Vendedor getVendedor() {
+		return vendedor;
+	}
+	public void setVendedor(Vendedor vendedor) {
+		this.vendedor = vendedor;
 	}
 }
