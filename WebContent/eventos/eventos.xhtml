@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+    <ui:composition template="/layout.xhtml">
+        <ui:define name="header">
+            <h1>Brasileiros em servidores de MMO?</h1>
+        </ui:define>
+    
+        <ui:define name="content">
+            <br />
+            <br />
+            <br />
+            <h:form styleClass="form">
+                <div class="form-group">
+                    <h:commandButton id="huebr" value="Brasileiros em MMO?"
+                        actionListener="#{evento.trocaTexto}"
+                        styleClass="btn btn-success" />
+
+
+                </div>
+
+                <div class="form-group">
+                    <h:commandButton id="serverAdmin" value="O que acontece?"
+                        styleClass="btn btn-primary">
+                        <f:actionListener type="handlers.EventoListener" />
+                    </h:commandButton>
+                </div>
+            </h:form>
+            
+            <hr />
+            
+            <h:form styleClass="form-inline">
+                <div class="form-group">
+                    <div class="input-group">
+                    <h:outputLabel value="Reclame Aqui: " for="reclame" /> 
+                    <h:inputText id="reclame" valueChangeListener="#{evento.mudancaDeValor}"/>
+                    </div>
+                    
+                </div>
+                <div class="form-group">
+                <h:commandButton value="Enviar" styleClass="btn btn-sm btn-danger" />
+                </div>
+                
+                <br />
+                
+                <div class="form-group">
+                    <h:outputText id="valorAlterado" />
+                </div>
+            </h:form>
+        </ui:define>
+
+        <ui:define name="footer" />
+    </ui:composition>
+</h:body>
+
+</html>
